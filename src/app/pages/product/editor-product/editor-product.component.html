@@ -1,0 +1,36 @@
+<br><br>
+<div class="uk-flex-center" uk-grid>
+  <div class="uk-width-1-2@m">
+    <div class="uk-card uk-card-default uk-card-body">
+      <h3 class="uk-card-title">Produtos</h3>
+      <form [formGroup]="form">
+        <div class="uk-margin">
+          <input mask="A#-###" type="text" class="uk-input uk-form-large" placeholder="Código" formControlName="code">
+        </div>
+        <div class="uk-margin">
+          <input type="text" class="uk-input uk-form-large" placeholder="Título" formControlName="title">
+        </div>
+        <div class="uk-margin">
+          <input type="tel" class="uk-input uk-form-large" placeholder="Preço" formControlName="price">
+        </div>
+        <div class="uk-margin">
+          <input type="text" class="uk-input uk-form-large" placeholder="Descrição" formControlName="description">
+        </div>
+        <div class="uk-margin">
+          <input type="number" class="uk-input uk-form-large" placeholder="Quantidade" formControlName="quantity">
+        </div>
+        <div class="uk-margin">
+          <select class="uk-input uk-form-large" formControlName="productClass">
+            <option value="{{item.code}}" *ngFor="let item of productClasses">{{item.title}}</option>
+          </select>
+        </div>
+      </form>
+      <a routerLink="/">Voltar</a>
+      <div class="uk-margin uk-text-right">
+
+        <button class="uk-button uk-button-default" [disabled]="form.invalid"
+          (click)="submit()">{{isUpdate ? 'Atualizar' : 'Cadastrar'}}</button>
+      </div>
+    </div>
+  </div>
+</div>

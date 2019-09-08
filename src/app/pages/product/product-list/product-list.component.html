@@ -1,0 +1,39 @@
+<app-loading [data]="products"></app-loading>
+<div class="uk-flex-center" uk-grid>
+  <h3 class="uk-card-title">Lista de produtos</h3>
+</div>
+<table class="uk-table uk-table-hover uk-table-divider uk-table-striped" *ngIf="products?.length > 0">
+  <thead>
+    <tr>
+      <th class="text-center">#</th>
+      <th class="text-center">Título</th>
+      <th class="text-center">Preço</th>
+      <th class="text-center">Descrição</th>
+      <th class="text-center">Quantidade</th>
+      <th class="text-center">Categoria</th>
+      <th class="text-center"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of products" [ngClass]="{'selected': item.code == product?.code }">
+      <td>{{item.code}}</td>
+      <td>{{item.title}}</td>
+      <td>{{item.price}}</td>
+      <td>{{item.description}}</td>
+      <td>{{item.quantity}}</td>
+      <td>{{item.productClass}}</td>
+      <td>
+        <button class="uk-icon-link" uk-icon="trash" (click)="delete(item)">
+        </button>
+        <button class="uk-icon-link uk-margin-small-right" uk-icon="file-edit" *ngIf="item.code != product?.code"
+          (click)="select(item)">
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+<button class="uk-button uk-button-primary" (click)="newProduct()">Novo Produto</button>
+
+<!-- <app-editor-product *ngIf="product" [product]="product"></app-editor-product> -->
